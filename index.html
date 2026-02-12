@@ -1,7 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio de Fátima | Lic. en Sistemas</title>
+    <style>
+        /* Diseño limpio y profesional */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: #f4f4f9; }
+        header { background: #2c3e50; color: #fff; padding: 2rem 0; text-align: center; }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { font-size: 1.2rem; color: #ecf0f1; }
+        .container { width: 80%; margin: auto; overflow: hidden; padding: 20px; }
+        .card { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .btn { display: inline-block; background: #3498db; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        .btn:hover { background: #2980b9; }
+        .tech-tag { background: #eee; padding: 5px 10px; border-radius: 4px; font-size: 0.9rem; margin-right: 5px; display: inline-block; margin-bottom: 5px;}
+        footer { background: #333; color: #fff; text-align: center; padding: 10px; margin-top: 20px; }
+    </style>
+</head>
 <body>
-<h1>Bienvenido al Portfolio Web de Fátima</h1>
-<p>Estudiante de Sistemas | C# & Python</p>
+
+    <header>
+        <div class="container">
+            <h1>Hola, soy Fátima</h1>
+            <p>Estudiante de Lic. en Sistemas de Información</p>
+            <p>Backend Developer | C# .NET | Python Django</p>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section class="card">
+            <h2>Sobre Mí</h2>
+            <p>Me apasiona el desarrollo de software con un enfoque en la arquitectura backend y la integridad de datos. Actualmente estoy profundizando en bases de datos SQL y lógica de negocio compleja, aplicando mis conocimientos académicos de estadística y probabilidad para optimizar soluciones.</p>
+        </section>
+
+        <section>
+            <h2>Mis Proyectos</h2>
+
+            <div class="card">
+                <h3>🏋️ Sistema de Gestión de Gimnasio</h3>
+                <p>Aplicación de escritorio robusta para la administración de socios, rutinas y personal. Enfocada en la eficiencia operativa.</p>
+                <div>
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">.NET</span>
+                    <span class="tech-tag">SQL Server</span>
+                    <span class="tech-tag">Visual Basic</span>
+                </div>
+                <a href="#" class="btn">Ver Código en GitHub</a>
+            </div>
+
+            <div class="card">
+                <h3>🧁 Pucakes - E-commerce</h3>
+                <p>Plataforma web para una pastelería de mascotas. Gestión completa de catálogo y pedidos con una arquitectura escalable.</p>
+                <div>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Django</span>
+                    <span class="tech-tag">SQLite/PostgreSQL</span>
+                </div>
+                <a href="#" class="btn">Ver Código en GitHub</a>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Contacto</h2>
+            <p>¿Te interesa mi perfil? ¡Hablemos!</p>
+            <a href="mailto:tu-email@ejemplo.com" class="btn">Enviar Email</a>
+            <a href="https://linkedin.com/in/tu-usuario" class="btn" style="background-color:#0077b5;">LinkedIn</a>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Desarrollado por Fátima &copy; 2024</p>
+    </footer>
+
 </body>
 </html>
