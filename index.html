@@ -5,27 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio de Fátima | Lic. en Sistemas</title>
     <style>
-        /* Diseño limpio y profesional */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: #f4f4f9; }
-        header { background: #2c3e50; color: #fff; padding: 2rem 0; text-align: center; }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { font-size: 1.2rem; color: #ecf0f1; }
-        .container { width: 80%; margin: auto; overflow: hidden; padding: 20px; }
-        .card { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        .btn { display: inline-block; background: #3498db; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
-        .btn:hover { background: #2980b9; }
-        .tech-tag { background: #eee; padding: 5px 10px; border-radius: 4px; font-size: 0.9rem; margin-right: 5px; display: inline-block; margin-bottom: 5px;}
-        footer { background: #333; color: #fff; text-align: center; padding: 10px; margin-top: 20px; }
+        /* ESTILO DARK MODE */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #e0e0e0; margin: 0; background-color: #121212; }
+        header { background: #1f1f1f; color: #00ff9d; padding: 3rem 0; text-align: center; border-bottom: 3px solid #00ff9d; }
+        header h1 { margin: 0; font-size: 2.5rem; color: #fff; }
+        header p { font-size: 1.2rem; color: #b0b0b0; }
+        
+        .container { width: 85%; max-width: 900px; margin: auto; overflow: hidden; padding: 20px; }
+        
+        /* Tarjetas oscuras */
+        .card { background: #2c2c2c; padding: 25px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border-left: 5px solid #00ff9d; }
+        
+        h2 { color: #00ff9d; border-bottom: 1px solid #444; padding-bottom: 10px; margin-top: 0; }
+        h3 { color: #fff; margin-bottom: 5px; }
+        
+        /* Botones Neon */
+        .btn { display: inline-block; background: transparent; color: #00ff9d; padding: 10px 20px; text-decoration: none;
+              border-radius: 5px; margin-top: 10px; border: 1px solid #00ff9d; transition: 0.3s; }
+        
+        .btn:hover { background: #00ff9d; color: #000; font-weight: bold; }
+        
+        .tech-tag { background: #444; color: #fff; padding: 5px 10px; border-radius: 4px; font-size: 0.85rem; 
+                   margin-right: 5px; display: inline-block; margin-bottom: 5px; border: 1px solid #555;}
+        
+        footer { background: #000; color: #888; text-align: center; padding: 20px; margin-top: 40px; font-size: 0.9rem; }
+        
+        /* Tu foto redonda */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Hace la foto redonda */
+            border: 4px solid #fff; /* Borde blanco */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            object-fit: cover; /* Asegura que la foto no se deforme */
+            display: block;
+            margin-bottom: 15px; 
+            margin: 0 auto 15px auto; /* Centra la imagen */
+        }
     </style>
 </head>
 <body>
 
     <header>
         <div class="container">
+            <img src="foto.jpg" alt="Fátima" class="profile-img">
+            
             <h1>Hola, soy Fátima</h1>
             <p>Estudiante de Lic. en Sistemas de Información</p>
-            <p>Backend Developer | C# .NET | Python Django</p>
+            <p>Backend Developer | C# .NET | Python | PHP</p>
         </div>
     </header>
 
@@ -61,19 +88,46 @@
                 </div>
                 <a href="#" class="btn">Ver Código en GitHub</a>
             </div>
+
+            <div class="card">
+                <h3>🍷 Sistema de Gestión de Ventas – Blendly</h3>
+                <p>Aplicación web integral bajo arquitectura <strong>MVC</strong>. Gestiona el ciclo completo de venta: catálogo, carrito persistente, pedidos y emisión automática de comprobantes PDF.</p>
+                
+                <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
+                    <strong>Destacado técnico:</strong> Implementación de lógica transaccional (Cabecera-Detalle) para asegurar la integridad histórica de los datos y normalización de Base de Datos.
+                </p>
+            
+                <div style="margin-top: 10px;">
+                    <span class="tech-tag">PHP 8</span>
+                    <span class="tech-tag">CodeIgniter 4</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">DOMPDF</span>
+                    <span class="tech-tag">Bootstrap 5</span>
+                </div>
+                
+                <a href="LINK-DE-TU-REPO-BLENDLY" class="btn">Ver Código y Documentación</a>
+            </div>
         </section>
 
-        <section class="card">
+        <section class="card" style="text-align: center;">
             <h2>Contacto</h2>
-            <p>¿Te interesa mi perfil? ¡Hablemos!</p>
-            <a href="mailto:tu-email@ejemplo.com" class="btn">Enviar Email</a>
-            <a href="https://linkedin.com/in/tu-usuario" class="btn" style="background-color:#0077b5;">LinkedIn</a>
+            <p>¿Te interesa mi perfil o quieres ver una demo de mis sistemas? ¡Hablemos!</p>
+            
+            <div style="margin-top: 20px;">
+                <a href="mailto:fatimabret@outlook.com" class="btn" style="margin: 5px;">
+                    📧 Enviar Email
+                </a>
+                
+                <a href="www.linkedin.com/in/fatimabret" class="btn" style="background-color:#0077b5; margin: 5px;">
+                    🔗 LinkedIn
+                </a>
+            </div>
         </section>
 
     </div>
 
     <footer>
-        <p>Desarrollado por Fátima &copy; 2024</p>
+        <p>Desarrollado por Fátima &copy; 2026</p>
     </footer>
 
 </body>
