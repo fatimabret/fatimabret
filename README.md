@@ -1,4 +1,4 @@
-# Hola, soy [Tu Nombre] 👋
+# Hola, soy Fatima 👋
 ### Estudiante de Lic. en Sistemas de Información | Backend & Desktop Developer
 
 ¡Bienvenido a mi portfolio de código! Me enfoco en crear soluciones de software que resuelven problemas reales de negocio, priorizando la integridad de datos y la arquitectura escalable.
@@ -37,5 +37,5 @@ Me apasiona entender el "por qué" detrás del código y cómo los datos fluyen 
 ---
 
 ### 📫 Contacto
-* [LinkedIn](link-a-tu-linkedin)
-* [Email](mailto:tu-email@ejemplo.com)
+* [LinkedIn](www.linkedin.com/in/fatimabret)
+* [Email](mailto:fatimabret@outlook.com)
