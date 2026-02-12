@@ -1,16 +1,41 @@
-## Hi there 👋
+# Hola, soy [Tu Nombre] 👋
+### Estudiante de Lic. en Sistemas de Información | Backend & Desktop Developer
 
-<!--
-**fatimabret/fatimabret** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+¡Bienvenido a mi portfolio de código! Me enfoco en crear soluciones de software que resuelven problemas reales de negocio, priorizando la integridad de datos y la arquitectura escalable.
 
-Here are some ideas to get you started:
+---
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### 🛠️ Tech Stack
+* **Lenguajes:** C#, Python, Visual Basic .NET, SQL.
+* **Web:** Django (Python), HTML/CSS.
+* **Desktop:** .NET Framework.
+* **Herramientas:** Git, Visual Studio, SQL Server.
+
+---
+
+### 🚀 Proyectos Destacados
+
+#### 🏋️ Sistema de Gestión de Gimnasio (Desktop)
+Aplicación de escritorio para la administración integral de un centro deportivo.
+* **Funcionalidad:** Gestión de socios, control de staff, asignación de rutinas y reportes.
+* **Tech:** C#, VB.NET, SQL Server (Stored Procedures para lógica de negocio).
+* **Enfoque:** Optimización de consultas y manejo robusto de datos relacionales.
+
+#### 🧁 Pucakes - E-commerce (Web)
+Plataforma web para una pastelería de mascotas (Pet Bakery).
+* **Funcionalidad:** Catálogo de productos, carrito de compras y gestión de pedidos.
+* **Tech:** Python, Django Framework.
+* **Enfoque:** Desarrollo backend limpio y escalable.
+
+---
+
+### 🧠 Sobre mí
+Actualmente cursando la **Licenciatura en Sistemas de Información**. Mi formación académica me permite aplicar conceptos de **Probabilidad y Estadística** para el análisis de datos y la toma de decisiones lógicas en mis desarrollos.
+
+Me apasiona entender el "por qué" detrás del código y cómo los datos fluyen a través de una arquitectura de software.
+
+---
+
+### 📫 Contacto
+* [LinkedIn](link-a-tu-linkedin)
+* [Email](mailto:tu-email@ejemplo.com)
