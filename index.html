@@ -5,41 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio de Fátima | Lic. en Sistemas</title>
     <style>
-        /* ESTILO TECH MODERN */
-        body { font-family: 'Inter', 'Segoe UI', sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: #f8f9fa; }
+        /* VARIABLES DE COLORES (Aquí está la magia) */
+        :root {
+            /* Tema CLARO (Solid Colors) */
+            --bg-color: #ffffff;
+            --text-main: #2c3e50;
+            --text-secondary: #555555;
+            --header-bg: #2c3e50; /* Azul sólido oscuro */
+            --header-text: #ffffff;
+            --card-bg: #f8f9fa; /* Gris muy claro para tarjetas */
+            --accent-color: #3498db; /* Azul sólido vibrante */
+            --border-color: #ddd;
+        }
+    
+        /* Tema OSCURO (Se activa con JS) */
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-main: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --header-bg: #1a1a1a;
+            --header-text: #00ff9d; /* Verde neon para contraste */
+            --card-bg: #1e1e1e;
+            --accent-color: #00ff9d;
+            --border-color: #333;
+        }
+    
+        /* ESTILOS GENERALES */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            margin: 0; 
+            transition: background-color 0.3s, color 0.3s; /* Suaviza el cambio */
+        }
+    
+        header { 
+            background-color: var(--header-bg); 
+            color: var(--header-text); 
+            padding: 3rem 0; 
+            text-align: center; 
+            position: relative;
+            transition: background-color 0.3s;
+        }
+    
+        .container { width: 90%; max-width: 800px; margin: auto; padding: 20px; }
+    
+        .card { 
+            background-color: var(--card-bg); 
+            padding: 25px; 
+            margin-bottom: 20px; 
+            border-radius: 8px; 
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s;
+        }
+    
+        h1, h2, h3 { color: inherit; }
+        h2 { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; }
+    
+        /* BOTONES DE ENLACE */
+        .btn { 
+            display: inline-block; 
+            background-color: var(--accent-color); 
+            color: #fff !important; /* Siempre blanco el texto del botón */
+            padding: 10px 20px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            margin-top: 10px; 
+            font-weight: bold;
+        }
+        .btn:hover { opacity: 0.8; }
+    
+        /* TAGS DE TECNOLOGÍA */
+        .tech-tag { 
+            background: rgba(0,0,0,0.1); 
+            border: 1px solid var(--border-color);
+            padding: 5px 10px; 
+            border-radius: 4px; 
+            font-size: 0.85rem; 
+            margin-right: 5px; 
+            display: inline-block; 
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+        }
         
-        /* Degradado moderno */
-        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 3rem 0; text-align: center; }
-        header h1 { margin: 0; font-size: 2.8rem; font-weight: 700; }
-        header p { font-size: 1.2rem; opacity: 0.9; }
-        
-        .container { width: 80%; max-width: 1000px; margin: auto; overflow: hidden; padding: 30px; }
-        
-        .card { background: #fff; padding: 30px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 10px 25px rgba(118, 75, 162, 0.1); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-3px); }
-        
-        h2 { color: #5a4b81; font-weight: 700; margin-top: 0; }
-        h3 { color: #2d3748; }
-        
-        /* Botones con degradado */
-        .btn { display: inline-block; background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 10px 25px; 
-              text-decoration: none; border-radius: 50px; margin-top: 10px; font-weight: 600; box-shadow: 0 4px 10px rgba(118, 75, 162, 0.3); }
-        .btn:hover { opacity: 0.9; box-shadow: 0 6px 15px rgba(118, 75, 162, 0.4); }
-        
-        .tech-tag { background: #e9ecef; color: #495057; padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; margin-right: 5px;
-                   display: inline-block; margin-bottom: 5px; font-weight: 600;}
-        
-        footer { background: #2d3748; color: #fff; text-align: center; padding: 20px; margin-top: 40px; }
-        
-        .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 5px solid rgba(255,255,255,0.3); margin-bottom: 15px; 
-                      object-fit: cover; display: block; margin-left: auto; margin-right: auto; }
+        /* FOTO */
+        .profile-img { 
+            width: 150px; height: 150px; border-radius: 50%; 
+            border: 4px solid var(--card-bg); 
+            margin: 0 auto 15px auto; display: block; object-fit: cover; 
+        }
+    
+        /* BOTONES DE TEMA (Toogles) */
+        .theme-switch-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .theme-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.5);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .theme-btn:hover { background: rgba(255,255,255,0.2); }
     </style>
 </head>
 <body>
 
     <header>
+        <div class="theme-switch-container">
+            <button class="theme-btn" onclick="setTheme('light')">☀️ Claro</button>
+            <button class="theme-btn" onclick="setTheme('dark')">🌙 Oscuro</button>
+        </div>
         <div class="container">
-            <img src="foto_cv.jpg" alt="Fátima" class="profile-img">
+            <img src="foto_cv.jpeg" alt="Fátima" class="profile-img">
             
             <h1>Hola, soy Fátima</h1>
             <p>Estudiante de Lic. en Sistemas de Información</p>
@@ -120,6 +204,15 @@
     <footer>
         <p>Desarrollado por Fátima &copy; 2026</p>
     </footer>
-
+    
+    <script>
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+    </script>
 </body>
 </html>
