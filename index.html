@@ -26,26 +26,19 @@
         /* MENÚ DE NAVEGACIÓN FIJO */
         nav {
             background-color: var(--header-bg);
-            padding: 15px 0;
-            text-align: center;
-            position: sticky; /* Esto hace que el menú persiga a la pantalla */
+            padding: 15px 20px; /* Un poco más de espacio a los lados */
+            position: sticky;
             top: 0;
             z-index: 1000;
             border-bottom: 2px solid var(--accent-color);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-    
-        nav a {
-            color: var(--header-text);
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-    
-        nav a:hover {
-            color: var(--accent-color);
+            
+            /* Flexbox para alinear y envolver elementos */
+            display: flex;
+            flex-wrap: wrap; /* Permite que los elementos bajen si no caben */
+            justify-content: center; /* Centra todo horizontalmente */
+            align-items: center; /* Centra todo verticalmente */
+            gap: 15px; /* Espacio entre todos los elementos (enlaces y botones) */
         }
     
         /* Ajuste para que el menú no tape los títulos al hacer clic */
@@ -148,24 +141,50 @@
             margin: 0 auto 15px auto; display: block; object-fit: cover; 
         }
     
-        /* BOTONES DE TEMA (Toogles) */
+        /* ESTILO PARA LOS ENLACES DEL MENÚ (Ahora parecen botones) */
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            font-size: 1rem; /* Tamaño de letra un poco más chico y fino */
+            transition: all 0.3s ease;
+            
+            /* Estilo de botón */
+            border: 1px solid rgba(255,255,255,0.5);
+            padding: 6px 15px;
+            border-radius: 20px;
+        }
+        
+        /* Efecto hover para los enlaces */
+        nav a:hover {
+            background-color: rgba(255,255,255,0.1); /* Fondo sutil al pasar el mouse */
+            border-color: var(--accent-color); /* Borde del color de acento */
+            color: var(--accent-color);
+        }
+        
+        /* CONTENEDOR DE BOTONES DE TEMA */
+        /* (Ya no es position: absolute, ahora fluye con el resto del menú) */
         .theme-switch-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
             display: flex;
             gap: 10px;
         }
+
+        /* BOTONES DE TEMA */
         .theme-btn {
             background: transparent;
             border: 1px solid rgba(255,255,255,0.5);
-            color: #fff;
-            padding: 5px 10px;
+            color: var(--header-text); /* Usamos la variable de texto del header */
+            padding: 6px 15px; /* Mismo padding que los enlaces */
             border-radius: 20px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
-        .theme-btn:hover { background: rgba(255,255,255,0.2); }
+        
+        /* Efecto hover para los botones de tema */
+        .theme-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-color: var(--accent-color);
+        }
 
         /* BOTÓN VOLVER ARRIBA */
         #btn-top {
@@ -218,8 +237,7 @@
         <a href="#contacto">Contacto</a>
 
         <div class="theme-switch-container">
-            <button class="theme-btn" onclick="setTheme('light')">☀️ Claro</button>
-            <button class="theme-btn" onclick="setTheme('dark')">🌙 Oscuro</button>
+            <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">🌙 Oscuro</button>
         </div>
     </nav>
     
@@ -230,6 +248,12 @@
             <h1>Hola, soy Fátima</h1>
             <p>Estudiante de Lic. en Sistemas de Información</p>
             <p>Backend Developer | C# .NET | Python | PHP</p>
+
+            <div style="margin-top: 25px;">
+                <a href="CV_Fatima_Sistemas.pdf" target="_blank" class="btn" style="padding: 12px 30px; border-radius: 30px; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+                    📄 Descargar CV
+                </a>
+            </div>
         </div>
     </header>
 
@@ -240,9 +264,8 @@
             <p>Me apasiona el desarrollo de software con un enfoque en la arquitectura backend y la integridad de datos. Actualmente estoy profundizando en bases de datos SQL.</p>
         </section>
 
-        <section id="lenguajes" class="card" style="text-align: center;">
+        <section id="lenguajes" class="card">
             <h2>Lenguajes y Tecnologías</h2>
-            <p>Herramientas que utilizo en mi día a día para construir soluciones:</p>
             
             <div class="skills-grid">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#" width="60" title="C#">
@@ -334,11 +357,20 @@
     </footer>
     
     <script>
-        function setTheme(theme) {
-            if (theme === 'dark') {
-                document.body.classList.add('dark-mode');
+        function toggleTheme() {
+            const body = document.body;
+            const btnTema = document.getElementById('theme-toggle');
+            
+            // La función toggle() agrega la clase si no existe, y la quita si ya existe
+            body.classList.toggle('dark-mode');
+            
+            // Preguntamos: ¿El body tiene ahora la clase dark-mode?
+            if (body.classList.contains('dark-mode')) {
+                // Si es oscuro, el botón debe ofrecer cambiar a Claro
+                btnTema.innerHTML = '☀️ Claro';
             } else {
-                document.body.classList.remove('dark-mode');
+                // Si es claro, el botón debe ofrecer cambiar a Oscuro
+                btnTema.innerHTML = '🌙 Oscuro';
             }
         }
         // LÓGICA DEL BOTÓN VOLVER ARRIBA
