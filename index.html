@@ -17,7 +17,58 @@
             --accent-color: #3498db; /* Azul sólido vibrante */
             --border-color: #ddd;
         }
+
+        /* CONFIGURACIÓN DEL SCROLL SUAVE */
+        html {
+            scroll-behavior: smooth;
+        }
     
+        /* MENÚ DE NAVEGACIÓN FIJO */
+        nav {
+            background-color: var(--header-bg);
+            padding: 15px 0;
+            text-align: center;
+            position: sticky; /* Esto hace que el menú persiga a la pantalla */
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+    
+        nav a:hover {
+            color: var(--accent-color);
+        }
+    
+        /* Ajuste para que el menú no tape los títulos al hacer clic */
+        section {
+            scroll-margin-top: 80px; 
+        }
+    
+        /* GRILLA DE LENGUAJES */
+        .skills-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .skills-grid img {
+            transition: transform 0.3s; /* Animación al pasar el mouse */
+            filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.1));
+        }
+        .skills-grid img:hover {
+            transform: scale(1.2); /* Se agranda un poco al tocarlo */
+        }
+        
         /* Tema OSCURO (Se activa con JS) */
         body.dark-mode {
             --bg-color: #121212;
@@ -115,15 +166,64 @@
             font-size: 14px;
         }
         .theme-btn:hover { background: rgba(255,255,255,0.2); }
+
+        /* BOTÓN VOLVER ARRIBA */
+        #btn-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-color); /* Fondo del botón */
+            color: var(--accent-color); /* Color de la flecha */
+            border: 2px solid var(--accent-color); /* Borde usando tu color de acento */
+            border-radius: 50%; /* Lo hace un círculo perfecto */
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            
+            /* Animaciones para ocultar/mostrar suavemente */
+            opacity: 0; 
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background-color 0.3s, color 0.3s;
+            z-index: 1000;
+        }
+    
+        #btn-top svg {
+            width: 24px;
+            height: 24px;
+        }
+    
+        /* Efecto al pasar el mouse por encima */
+        #btn-top:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+            transform: translateY(-5px); /* Pequeño saltito hacia arriba */
+        }
+    
+        /* Clase que añadiremos con JavaScript para mostrarlo */
+        #btn-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="#sobre-mi">Sobre Mí</a>
+        <a href="#lenguajes">Lenguajes</a>
+        <a href="#proyectos">Mis Proyectos</a>
+        <a href="#contacto">Contacto</a>
 
-    <header>
         <div class="theme-switch-container">
             <button class="theme-btn" onclick="setTheme('light')">☀️ Claro</button>
             <button class="theme-btn" onclick="setTheme('dark')">🌙 Oscuro</button>
         </div>
+    </nav>
+    
+    <header>
         <div class="container">
             <img src="cv_foto.jpg" alt="Fátima" class="profile-img">
             
@@ -135,12 +235,32 @@
 
     <div class="container">
         
-        <section class="card">
+        <section id="sobre-mi" class="card">
             <h2>Sobre Mí</h2>
-            <p>Me apasiona el desarrollo de software con un enfoque en la arquitectura backend y la integridad de datos. Actualmente estoy profundizando en bases de datos SQL y lógica de negocio compleja, aplicando mis conocimientos académicos de estadística y probabilidad para optimizar soluciones.</p>
+            <p>Me apasiona el desarrollo de software con un enfoque en la arquitectura backend y la integridad de datos. Actualmente estoy profundizando en bases de datos SQL.</p>
         </section>
 
-        <section>
+        <section id="lenguajes" class="card" style="text-align: center;">
+            <h2>Lenguajes y Tecnologías</h2>
+            <p>Herramientas que utilizo en mi día a día para construir soluciones:</p>
+            
+            <div class="skills-grid">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#" width="60" title="C#">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg" alt=".NET" width="60" title=".NET">
+                
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width="60" title="Python">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" alt="Django" width="60" title="Django">
+                
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP" width="60" title="PHP">
+                
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" alt="MySQL" width="60" title="MySQL">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="SQL Server" width="60" title="SQL Server">
+                
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" width="60" title="Git">
+            </div>
+        </section>
+        
+        <section id="proyectos">
             <h2>Mis Proyectos</h2>
 
             <div class="card">
@@ -186,7 +306,7 @@
             </div>
         </section>
 
-        <section class="card" style="text-align: center;">
+        <section id="contacto" class="card" style="text-align: center;">
             <h2>Contacto</h2>
             <p>¿Te interesa mi perfil o quieres ver una demo de mis sistemas? ¡Hablemos!</p>
             
@@ -203,6 +323,12 @@
 
     </div>
 
+    <button id="btn-top" title="Volver al inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+    
     <footer>
         <p>Desarrollado por Fátima &copy; 2026</p>
     </footer>
@@ -215,6 +341,27 @@
                 document.body.classList.remove('dark-mode');
             }
         }
+        // LÓGICA DEL BOTÓN VOLVER ARRIBA
+        const btnTop = document.getElementById("btn-top");
+    
+        // Detectar cuando el usuario hace scroll
+        window.addEventListener("scroll", () => {
+            // Si baja más de 300 píxeles (pasando el header), mostramos el botón
+            if (window.scrollY > 300) {
+                btnTop.classList.add("show");
+            } else {
+                // Si sube de nuevo, lo ocultamos
+                btnTop.classList.remove("show");
+            }
+        });
+    
+        // Acción al hacer clic en el botón
+        btnTop.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // Sube con una animación suave
+            });
+        });
     </script>
 </body>
 </html>
