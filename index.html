@@ -301,6 +301,26 @@
             opacity: 1;
             visibility: visible;
         }
+
+        /* ESTILO PARA PROYECTOS EN DESARROLLO (Borde punteado) */
+        .card-wip {
+            border: 2px dashed var(--text-secondary); /* Borde punteado gris */
+            background-color: transparent; /* Fondo transparente para diferenciarlo */
+        }
+        
+        /* ETIQUETA "EN DISEÑO" */
+        .badge-wip {
+            font-size: 0.65em;
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            padding: 4px 10px;
+            border-radius: 15px;
+            vertical-align: middle;
+            margin-left: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
     </style>
 </head>
     
@@ -358,7 +378,7 @@
             <h2>Mis Proyectos</h2>
 
             <div class="card">
-                <h3>Sistema de Gestión de Gimnasio</h3>
+                <h3>Workout - Sistema de Gestión de Gimnasio</h3>
                 <p>Aplicación de escritorio robusta para la administración de socios, rutinas y personal. Enfocada en la eficiencia operativa.</p>
                 <div>
                     <span class="tech-tag">C#</span>
@@ -388,7 +408,7 @@
             </div>
 
             <div class="card">
-                <h3>Sistema de Gestión de Ventas – Blendly</h3>
+                <h3>Blendly – Sistema de Gestión de Ventas</h3>
                 <p>Aplicación web integral bajo arquitectura <strong>MVC</strong>. Gestiona el ciclo completo de venta: catálogo, carrito persistente, pedidos y emisión automática de comprobantes PDF.</p>
                 
                 <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
@@ -406,6 +426,25 @@
                 <div class="botones-proyecto">
                     <a href="https://github.com/fatimabret/Blendly" target="_blank" class="btn">Ver Código</a>
                     <span class="btn btn-disabled">Demo Próximamente</span>
+                </div>
+            </div>
+
+            <div class="card card-wip">
+                <h3>A Mates por el Camino <span class="badge-wip">- En Diseño</span></h3>
+                <p>Plataforma de e-commerce y logística para mates artesanales. <strong>Actualmente en fase de arquitectura de software y modelado de datos (Diagrama Entidad-Relación).</strong></p>
+                
+                <p style="font-size: 0.9em; color: var(--text-secondary); margin-top: 10px;">
+                    <strong>Enfoque actual:</strong> Diseño de base de datos relacional normalizada, planificación del motor de estados centralizado para seguimiento de envíos y lógica transaccional para personalización de productos.
+                </p>
+            
+                <div style="margin-top: 10px;">
+                    <span class="tech-tag">Modelado de Datos</span>
+                    <span class="tech-tag">Diagrama ER</span>
+                    <span class="tech-tag">Arquitectura</span>
+                </div>
+                
+                <div class="botones-proyecto">
+                    <span class="btn btn-disabled">Código Próximamente</span>
                 </div>
             </div>
         </section>
