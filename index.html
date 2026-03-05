@@ -23,27 +23,80 @@
             scroll-behavior: smooth;
         }
     
-        /* MENÚ DE NAVEGACIÓN FIJO */
+        /* BARRA INFERIOR (ESTILO APP / DOCK) */
         nav {
             background-color: var(--header-bg);
-            padding: 15px 20px; /* Un poco más de espacio a los lados */
-            position: sticky;
-            top: 0;
+            padding: 10px 20px;
+            position: fixed; /* Se queda fijo en la pantalla */
+            bottom: 25px; /* Separación desde abajo */
+            left: 50%; /* Centramos la barra... */
+            transform: translateX(-50%); /* ...exactamente en el medio */
             z-index: 1000;
-            border-bottom: 2px solid var(--accent-color);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 2px solid var(--accent-color);
+            border-radius: 50px; /* Forma de píldora redondeada */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             
-            /* Flexbox para alinear y envolver elementos */
             display: flex;
-            flex-wrap: wrap; /* Permite que los elementos bajen si no caben */
-            justify-content: center; /* Centra todo horizontalmente */
-            align-items: center; /* Centra todo verticalmente */
-            gap: 15px; /* Espacio entre todos los elementos (enlaces y botones) */
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: max-content; /* Se adapta al contenido */
+            max-width: 95%; /* Evita que se salga en celulares */
         }
-    
-        /* Ajuste para que el menú no tape los títulos al hacer clic */
+        
+        /* ESTILO DE LOS ENLACES DE LA BARRA */
+        nav a {
+            color: var(--header-text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 30px;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255,255,255,0.15);
+            color: var(--accent-color);
+        }
+
+        /* BOTÓN DE TEMA EN LA BARRA */
+        .theme-btn {
+            background: transparent;
+            border: none;
+            color: var(--header-text);
+            font-size: 1.3rem; /* Emoji un poco más grande */
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        
+        .theme-btn:hover {
+            transform: scale(1.15) rotate(15deg); /* Pequeño efecto dinámico */
+        }
+
+        /* AJUSTE PARA EL BODY Y SECCIONES */
+        body { 
+            /* Agregamos espacio al final para que la barra no tape el footer */
+            padding-bottom: 80px; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            margin: 0; 
+            transition: background-color 0.3s, color 0.3s; 
+        }
+
         section {
-            scroll-margin-top: 80px; 
+            /* Como ya no hay barra arriba, quitamos el margen superior excesivo */
+            scroll-margin-top: 20px; 
+        }
+        
+        /* ADAPTACIÓN PARA CELULARES */
+        @media (max-width: 500px) {
+            nav { padding: 8px 10px; gap: 5px; }
+            nav a { font-size: 0.8rem; padding: 6px 10px; }
+            .theme-btn { font-size: 1.1rem; }
         }
     
         /* GRILLA DE LENGUAJES */
@@ -189,7 +242,7 @@
         /* BOTÓN VOLVER ARRIBA */
         #btn-top {
             position: fixed;
-            bottom: 30px;
+            bottom: 100px; 
             right: 30px;
             width: 50px;
             height: 50px;
@@ -231,14 +284,11 @@
 </head>
 <body>
     <nav>
-        <a href="#sobre-mi">Sobre Mí</a>
-        <a href="#lenguajes">Lenguajes</a>
-        <a href="#proyectos">Mis Proyectos</a>
+        <a href="#sobre-mi">Perfil</a>
+        <a href="#lenguajes">Tech</a>
+        <a href="#proyectos">Proyectos</a>
         <a href="#contacto">Contacto</a>
-
-        <div class="theme-switch-container">
-            <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">🌙 Oscuro</button>
-        </div>
+        <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()" title="Cambiar Tema">🌙</button>
     </nav>
     
     <header>
@@ -361,16 +411,12 @@
             const body = document.body;
             const btnTema = document.getElementById('theme-toggle');
             
-            // La función toggle() agrega la clase si no existe, y la quita si ya existe
             body.classList.toggle('dark-mode');
             
-            // Preguntamos: ¿El body tiene ahora la clase dark-mode?
             if (body.classList.contains('dark-mode')) {
-                // Si es oscuro, el botón debe ofrecer cambiar a Claro
-                btnTema.innerHTML = '☀️ Claro';
+                btnTema.innerHTML = '☀️';
             } else {
-                // Si es claro, el botón debe ofrecer cambiar a Oscuro
-                btnTema.innerHTML = '🌙 Oscuro';
+                btnTema.innerHTML = '🌙';
             }
         }
         // LÓGICA DEL BOTÓN VOLVER ARRIBA
