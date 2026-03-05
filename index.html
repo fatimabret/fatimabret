@@ -5,81 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio de Fátima | Lic. en Sistemas</title>
     <style>
-        /* VARIABLES DE COLORES (Aquí está la magia) */
+        /* VARIABLES DE COLORES (Minimalista Blanco/Negro y Gris) */
         :root {
-            /* Tema CLARO (Solid Colors) */
-            --bg-color: #ffffff;
-            --text-main: #2c3e50;
-            --text-secondary: #555555;
-            --header-bg: #2c3e50; /* Azul sólido oscuro */
-            --header-text: #ffffff;
-            --card-bg: #f8f9fa; /* Gris muy claro para tarjetas */
-            --accent-color: #3498db; /* Azul sólido vibrante */
-            --border-color: #ddd;
+            /* Tema CLARO (Blanco y Grises) */
+            --bg-color: #f9f9f9; /* Fondo general muy claro */
+            --text-main: #222222; /* Texto principal oscuro */
+            --text-secondary: #666666; /* Texto secundario gris */
+            --header-bg: #ffffff; /* Header y menús blancos */
+            --header-text: #222222; /* Texto del header oscuro */
+            --card-bg: #ffffff; /* Tarjetas blancas */
+            --accent-color: #333333; /* Acentos y botones gris oscuro */
+            --btn-text: #ffffff; /* Texto dentro de los botones (blanco) */
+            --border-color: #dddddd; /* Bordes gris claro */
+        }
+
+        /* Tema OSCURO (Negro puro y Blanco) */
+        body.dark-mode {
+            --bg-color: #000000; /* Fondo negro puro */
+            --text-main: #ffffff; /* Texto principal blanco puro */
+            --text-secondary: #aaaaaa; /* Texto secundario gris claro */
+            --header-bg: #111111; /* Header negro casi puro */
+            --header-text: #ffffff; /* Texto del header blanco */
+            --card-bg: #0a0a0a; /* Tarjetas casi negras */
+            --accent-color: #ffffff; /* Acentos y botones blancos */
+            --btn-text: #000000; /* Texto dentro de los botones (negro) */
+            --border-color: #333333; /* Bordes gris oscuro */
         }
 
         /* CONFIGURACIÓN DEL SCROLL SUAVE */
         html {
             scroll-behavior: smooth;
         }
-    
+
         /* BARRA INFERIOR (ESTILO APP / DOCK) */
         nav {
             background-color: var(--header-bg);
-            padding: 10px 20px;
-            position: fixed; /* Se queda fijo en la pantalla */
-            bottom: 25px; /* Separación desde abajo */
-            left: 50%; /* Centramos la barra... */
-            transform: translateX(-50%); /* ...exactamente en el medio */
+            padding: 10px 15px;
+            position: fixed; 
+            bottom: 25px; 
+            left: 50%; 
+            transform: translateX(-50%); 
             z-index: 1000;
-            border: 2px solid var(--accent-color);
-            border-radius: 50px; /* Forma de píldora redondeada */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color); 
+            border-radius: 25px; /* Reducido a 25px para que se adapte si hay dos líneas */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
             
             display: flex;
+            flex-wrap: wrap; /* LA MAGIA: Permite que los elementos bajen si no caben */
             justify-content: center;
             align-items: center;
-            gap: 10px;
-            width: max-content; /* Se adapta al contenido */
-            max-width: 95%; /* Evita que se salga en celulares */
+            gap: 8px; /* Espacio un poco más ajustado */
+            width: max-content; 
+            max-width: 92%; /* Asegura que deje un margen a los lados en el celular */
         }
-        
+
         /* ESTILO DE LOS ENLACES DE LA BARRA */
         nav a {
             color: var(--header-text);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             transition: all 0.3s ease;
-            padding: 8px 15px;
-            border-radius: 30px;
-        }
-        
-        nav a:hover {
-            background-color: rgba(255,255,255,0.15);
-            color: var(--accent-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            white-space: nowrap; /* Evita que textos como "Sobre Mí" se partan en dos líneas */
         }
 
-        /* BOTÓN DE TEMA EN LA BARRA */
+        nav a:hover {
+            background-color: var(--accent-color);
+            color: var(--btn-text);
+        }
+
+        /* BOTÓN DE TEMA EN LA BARRA (Sin animación) */
         .theme-btn {
             background: transparent;
             border: none;
             color: var(--header-text);
-            font-size: 1.3rem; /* Emoji un poco más grande */
+            font-size: 1.2rem; 
             cursor: pointer;
-            padding: 5px 10px;
+            padding: 4px 8px;
             border-radius: 50%;
-            transition: transform 0.3s ease;
+            transition: background-color 0.3s ease; 
         }
-        
+
         .theme-btn:hover {
-            transform: scale(1.15) rotate(15deg); /* Pequeño efecto dinámico */
+            background-color: var(--border-color); 
         }
 
         /* AJUSTE PARA EL BODY Y SECCIONES */
         body { 
-            /* Agregamos espacio al final para que la barra no tape el footer */
-            padding-bottom: 80px; 
+            padding-bottom: 90px; /* Un poco más de espacio abajo por si la barra crece */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             background-color: var(--bg-color); 
             color: var(--text-main); 
@@ -88,17 +103,25 @@
         }
 
         section {
-            /* Como ya no hay barra arriba, quitamos el margen superior excesivo */
             scroll-margin-top: 20px; 
         }
-        
-        /* ADAPTACIÓN PARA CELULARES */
+
+        /* ADAPTACIÓN EXTREMA PARA CELULARES PEQUEÑOS */
         @media (max-width: 500px) {
-            nav { padding: 8px 10px; gap: 5px; }
-            nav a { font-size: 0.8rem; padding: 6px 10px; }
-            .theme-btn { font-size: 1.1rem; }
+            nav { 
+                padding: 8px; 
+                gap: 4px; 
+                bottom: 15px; /* Lo bajamos un poquito más al borde */
+            }
+            nav a { 
+                font-size: 0.75rem; /* Letra más pequeña para que entre perfecto */
+                padding: 5px 8px; 
+            }
+            .theme-btn { 
+                font-size: 1rem; 
+            }
         }
-    
+
         /* GRILLA DE LENGUAJES */
         .skills-grid {
             display: flex;
@@ -108,34 +131,14 @@
             margin-top: 20px;
         }
         .skills-grid img {
-            transition: transform 0.3s; /* Animación al pasar el mouse */
+            transition: transform 0.3s; 
             filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.1));
         }
         .skills-grid img:hover {
-            transform: scale(1.2); /* Se agranda un poco al tocarlo */
+            transform: scale(1.2); 
         }
-        
-        /* Tema OSCURO (Se activa con JS) */
-        body.dark-mode {
-            --bg-color: #121212;
-            --text-main: #e0e0e0;
-            --text-secondary: #b0b0b0;
-            --header-bg: #1a1a1a;
-            --header-text: #00ff9d; /* Verde neon para contraste */
-            --card-bg: #1e1e1e;
-            --accent-color: #00ff9d;
-            --border-color: #333;
-        }
-    
+
         /* ESTILOS GENERALES */
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
-            margin: 0; 
-            transition: background-color 0.3s, color 0.3s; /* Suaviza el cambio */
-        }
-    
         header { 
             background-color: var(--header-bg); 
             color: var(--header-text); 
@@ -145,10 +148,10 @@
             transition: background-color 0.3s;
         }
 
-        footer { text-align: center; padding: 30px; border-top: 1px solid #eaeaea; }
-        
+        footer { text-align: center; padding: 30px; border-top: 1px solid var(--border-color); }
+
         .container { width: 90%; max-width: 800px; margin: auto; padding: 20px; }
-    
+
         .card { 
             background-color: var(--card-bg); 
             padding: 25px; 
@@ -157,26 +160,56 @@
             border: 1px solid var(--border-color);
             transition: background-color 0.3s;
         }
-    
+
         h1, h2, h3 { color: inherit; }
         h2 { border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; }
-    
-        /* BOTONES DE ENLACE */
+
+        /* CONTENEDOR DE BOTONES DE PROYECTO */
+        .botones-proyecto {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        /* BOTÓN PRINCIPAL (Ver Código) */
         .btn { 
             display: inline-block; 
             background-color: var(--accent-color); 
-            color: #fff !important; /* Siempre blanco el texto del botón */
-            padding: 10px 20px; 
+            color: var(--btn-text) !important; 
+            border: 2px solid var(--accent-color); /* Agregamos borde para igualar tamaños */
+            padding: 8px 18px; 
             text-decoration: none; 
             border-radius: 5px; 
-            margin-top: 10px; 
             font-weight: bold;
+            transition: all 0.3s;
         }
         .btn:hover { opacity: 0.8; }
-    
+
+        /* BOTÓN DESACTIVADO (Próximamente) */
+        .btn-disabled {
+            background-color: transparent; /* Fondo transparente */
+            color: var(--text-secondary) !important; /* Letra gris */
+            border: 2px solid var(--border-color); /* Borde gris sutil */
+            cursor: not-allowed; /* Muestra el cursor de 'prohibido' o tachado */
+            opacity: 0.6; /* Lo hace un poco transparente */
+            pointer-events: none; /* Evita que se le pueda hacer clic accidentalmente */
+        }
+        
+        /* BOTÓN SECUNDARIO (Ver Página / Demo) */
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main) !important; /* Letra oscura en tema claro, blanca en oscuro */
+        }
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: var(--btn-text) !important;
+            opacity: 1;
+        }
+
         /* TAGS DE TECNOLOGÍA */
         .tech-tag { 
-            background: rgba(0,0,0,0.1); 
+            background: transparent; 
             border: 1px solid var(--border-color);
             padding: 5px 10px; 
             border-radius: 4px; 
@@ -186,59 +219,50 @@
             margin-bottom: 5px;
             color: var(--text-secondary);
         }
-        
+
         /* FOTO */
         .profile-img { 
             width: 150px; height: 150px; border-radius: 50%; 
-            border: 4px solid var(--card-bg); 
+            border: 4px solid var(--border-color); 
             margin: 0 auto 15px auto; display: block; object-fit: cover; 
         }
-    
-        /* ESTILO PARA LOS ENLACES DEL MENÚ (Ahora parecen botones) */
-        nav a {
-            color: var(--header-text);
-            text-decoration: none;
-            font-size: 1rem; /* Tamaño de letra un poco más chico y fino */
-            transition: all 0.3s ease;
-            
-            /* Estilo de botón */
-            border: 1px solid rgba(255,255,255,0.5);
-            padding: 6px 15px;
-            border-radius: 20px;
-        }
-        
-        /* Efecto hover para los enlaces */
-        nav a:hover {
-            background-color: rgba(255,255,255,0.1); /* Fondo sutil al pasar el mouse */
-            border-color: var(--accent-color); /* Borde del color de acento */
-            color: var(--accent-color);
-        }
-        
-        /* CONTENEDOR DE BOTONES DE TEMA */
-        /* (Ya no es position: absolute, ahora fluye con el resto del menú) */
-        .theme-switch-container {
+
+        /* ESTILOS PARA LOS ICONOS DE CONTACTO */
+        .social-links {
             display: flex;
-            gap: 10px;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
         }
 
-        /* BOTONES DE TEMA */
-        .theme-btn {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.5);
-            color: var(--header-text); /* Usamos la variable de texto del header */
-            padding: 6px 15px; /* Mismo padding que los enlaces */
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 1rem;
+        .social-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            color: var(--text-main); /* El icono toma este color */
+            text-decoration: none;
             transition: all 0.3s ease;
+            background-color: transparent;
+        }
+
+        .social-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--btn-text); /* Cambia el color del icono al pasar el mouse */
+            border-color: var(--accent-color);
+            transform: translateY(-5px); /* Pequeño salto hacia arriba */
+        }
+
+        /* Aseguramos que el SVG (el dibujito) ocupe el tamaño correcto */
+        .social-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor; /* Esto hace que el SVG herede el color automáticamente */
         }
         
-        /* Efecto hover para los botones de tema */
-        .theme-btn:hover {
-            background-color: rgba(255,255,255,0.1);
-            border-color: var(--accent-color);
-        }
-
         /* BOTÓN VOLVER ARRIBA */
         #btn-top {
             position: fixed;
@@ -246,46 +270,44 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background-color: var(--bg-color); /* Fondo del botón */
-            color: var(--accent-color); /* Color de la flecha */
-            border: 2px solid var(--accent-color); /* Borde usando tu color de acento */
-            border-radius: 50%; /* Lo hace un círculo perfecto */
+            background-color: var(--bg-color); 
+            color: var(--accent-color); 
+            border: 2px solid var(--accent-color); 
+            border-radius: 50%; 
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             
-            /* Animaciones para ocultar/mostrar suavemente */
             opacity: 0; 
             visibility: hidden;
             transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background-color 0.3s, color 0.3s;
             z-index: 1000;
         }
-    
+
         #btn-top svg {
             width: 24px;
             height: 24px;
         }
-    
-        /* Efecto al pasar el mouse por encima */
+
         #btn-top:hover {
             background-color: var(--accent-color);
-            color: #fff;
-            transform: translateY(-5px); /* Pequeño saltito hacia arriba */
+            color: var(--btn-text); /* Dinámico: texto negro o blanco */
+            transform: translateY(-5px); 
         }
-    
-        /* Clase que añadiremos con JavaScript para mostrarlo */
+
         #btn-top.show {
             opacity: 1;
             visibility: visible;
         }
     </style>
 </head>
+    
 <body>
     <nav>
         <a href="#sobre-mi">Perfil</a>
-        <a href="#lenguajes">Tech</a>
+        <a href="#lenguajes">Tecnologias</a>
         <a href="#proyectos">Proyectos</a>
         <a href="#contacto">Contacto</a>
         <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()" title="Cambiar Tema">🌙</button>
@@ -337,19 +359,21 @@
             <h2>Mis Proyectos</h2>
 
             <div class="card">
-                <h3>🏋️ Sistema de Gestión de Gimnasio</h3>
+                <h3>Sistema de Gestión de Gimnasio</h3>
                 <p>Aplicación de escritorio robusta para la administración de socios, rutinas y personal. Enfocada en la eficiencia operativa.</p>
                 <div>
                     <span class="tech-tag">C#</span>
                     <span class="tech-tag">.NET</span>
                     <span class="tech-tag">SQL Server</span>
-                    <span class="tech-tag">Visual Basic</span>
                 </div>
-                <a href="https://github.com/fatimabret/ProyectoTaller2Workout" target="_blank" class="btn">Ver Código</a>
+                <div class="botones-proyecto">
+                    <a href="https://github.com/fatimabret/ProyectoTaller2Workout" target="_blank" class="btn">Ver Código</a>
+                    <span class="btn btn-disabled">Demo Próximamente</span>
+                </div>
             </div>
 
             <div class="card">
-                <h3>🧁 Pucakes - E-commerce</h3>
+                <h3>Pucakes - E-commerce</h3>
                 <p>Plataforma web para una pastelería de mascotas. Gestión completa de catálogo y pedidos con una arquitectura escalable.</p>
                 <div>
                     <span class="tech-tag">Python</span>
@@ -357,10 +381,14 @@
                     <span class="tech-tag">SQLite/PostgreSQL</span>
                 </div>
                 <a href="https://github.com/fatimabret/pucakes" target="_blank" class="btn">Ver Código</a>
+                <div class="botones-proyecto">
+                    <a href="https://github.com/fatimabret/pucakes" target="_blank" class="btn">Ver Código</a>
+                    <a href="https://pucakes.pythonanywhere.com/" target="_blank" class="btn btn-outline">Ver Página</a>
+                </div>
             </div>
 
             <div class="card">
-                <h3>🍷 Sistema de Gestión de Ventas – Blendly</h3>
+                <h3>Sistema de Gestión de Ventas – Blendly</h3>
                 <p>Aplicación web integral bajo arquitectura <strong>MVC</strong>. Gestiona el ciclo completo de venta: catálogo, carrito persistente, pedidos y emisión automática de comprobantes PDF.</p>
                 
                 <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
@@ -375,7 +403,10 @@
                     <span class="tech-tag">Bootstrap 5</span>
                 </div>
                 
-                <a href="https://github.com/fatimabret/Blendly" target="_blank" class="btn">Ver Código</a>
+                <div class="botones-proyecto">
+                    <a href="https://github.com/fatimabret/Blendly" target="_blank" class="btn">Ver Código</a>
+                    <span class="btn btn-disabled">Demo Próximamente</span>
+                </div>
             </div>
         </section>
 
@@ -383,17 +414,26 @@
             <h2>Contacto</h2>
             <p>¿Te interesa mi perfil o quieres ver una demo de mis sistemas? ¡Hablemos!</p>
             
-            <div style="margin-top: 20px;">
-                <a href="mailto:fatimabret@outlook.com" class="btn" style="margin: 5px;">
-                    📧 Enviar Email
+            <div class="social-links">
+                <a href="mailto:fatimabret@outlook.com" class="social-btn" title="Enviar Email">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
                 </a>
                 
-                <a href="https://www.linkedin.com/in/fatimabret" target="_blank" class="btn" style="background-color:#0077b5; margin: 5px;">
-                    🔗 LinkedIn
+                <a href="https://www.linkedin.com/in/fatimabret" target="_blank" class="social-btn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-1.85 0-2.58 1.02-3.02 1.67v-1.43h-2.94v8.32h2.94v-4.66c0-1.24.24-2.44 1.77-2.44 1.5 0 1.52 1.44 1.52 2.52v4.58h2.99M6.46 18.5v-8.32h2.94v8.32H6.46M7.93 4.88c-1.04 0-1.68.73-1.68 1.64 0 .89.62 1.64 1.64 1.64h.02c1.06 0 1.68-.75 1.68-1.64 0-.91-.6-1.64-1.66-1.64z"/>
+                    </svg>
+                </a>
+
+                <a href="https://github.com/fatimabret" target="_blank" class="social-btn" title="GitHub">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                    </svg>
                 </a>
             </div>
         </section>
-
     </div>
 
     <button id="btn-top" title="Volver al inicio">
